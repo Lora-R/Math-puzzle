@@ -47,7 +47,15 @@ def popup_won():
     global pop
     pop = Toplevel(tk)
     pop.title("Message")
-    pop.geometry("270x200")
+    w = 250
+    h = 200
+    screen_w = pop.winfo_screenwidth()
+    screen_h = pop.winfo_screenheight()
+    x = (screen_w / 2) - (w / 2)
+    y = (screen_h / 2) - (h / 2)
+
+    # tk.geometry(f"{w}x{h}+{int(x)}+{int(y)}")
+    pop.geometry(f"{w}x{h}+{int(x)}+{int(y)}")
     # popup which appears if the player solved the puzzle
     if list_new == list_correct_nums:
         pop.config(bg="green")
@@ -61,8 +69,8 @@ def popup_won():
     # popup which appears if the player Couldn't solve the puzzle
     else:
         pop.config(bg="red")
-        pop_label = Label(pop, text=f"You couldn't solve the puzzle !\nYou can try again!\n \n *_*    *_*    *_*\n")
-        pop_label.grid(column=1, row=1, pady=50, padx=50)
+        pop_label = Label(pop, text=f"You couldn't solve the puzzle!\nYou can try again!\n \n *_*    *_*    *_*\n")
+        pop_label.grid(column=1, row=1, pady=50, padx=45)
         # refresh_game_button = Button(pop, text="Try again", height=1, width=9, bg="light green", command=render_create_view)
         # refresh_game_button.grid(column=1, row=2)
 
@@ -165,8 +173,16 @@ if __name__=='__main__':
     # main visualization
     tk = Tk()
     tk.title("Math puzzle")
-    tk.geometry("450x300")
+    w = 450
+    h = 300
+    screen_w = tk.winfo_screenwidth()
+    screen_h = tk.winfo_screenheight()
+    x = (screen_w / 2) - (w / 2)
+    y = (screen_h / 2) - (h / 2)
+
+    tk.geometry(f"{w}x{h}+{int(x)}+{int(y)}")
     # => the function with explanation and "Start" button
     render_main_view()
     # loop to keep the window visible
     tk.mainloop()
+
