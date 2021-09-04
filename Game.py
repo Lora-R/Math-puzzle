@@ -173,14 +173,15 @@ if __name__=='__main__':
     # main visualization
     tk = Tk()
     tk.title("Math puzzle")
+    
     w = 450
     h = 300
     screen_w = tk.winfo_screenwidth()
     screen_h = tk.winfo_screenheight()
     x = (screen_w / 2) - (w / 2)
     y = (screen_h / 2) - (h / 2)
-
     tk.geometry(f"{w}x{h}+{int(x)}+{int(y)}")
+    
     # => the function with explanation and "Start" button
     render_main_view()
     # loop to keep the window visible
