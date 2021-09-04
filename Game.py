@@ -39,7 +39,7 @@ def render_main_view():
                          "You can use the numbers from 1 to 9 just once to fill every single missing peace\n"
                          "Good luck!\n Please fill all the empty boxes!")
     lbl.grid(column=0, row=0)
-    # Start button to start the game
+    # 'Start' button to start the game
     start_button = Button(tk, text="Start", height=1, width=7, bg="light green", command=render_create_view)
     start_button.grid(column=0, row=3, pady= 20)
 
