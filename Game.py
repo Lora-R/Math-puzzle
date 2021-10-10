@@ -86,7 +86,7 @@ def create_data(list_entry_data_col):
         num = check.get()
         list_new.append(int(num))
     print(list_new)
-    print(list_correct_nums)
+#     print(list_correct_nums)
     # call function to check the answers from the player with the correct ones
     popup_won()
 
@@ -172,10 +172,8 @@ def render_create_view():
 
     refresh_game_button = Button(tk, text="Quit\n game", height=2, width=8, bg="white", command=tk.quit)
     refresh_game_button.grid(column=0, row=15, padx=30, pady=20)
-    # quit_button = Button(tk, text="Quit", height=1, width=7, bg="white", command=tk.quit)
-    # quit_button.grid(column=0, row=19)
 
-    print(list_entry_data_col)
+#     print(list_entry_data_col)
 
 
 if __name__ == '__main__':
