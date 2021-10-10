@@ -11,7 +11,8 @@ list_new = []
 list_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 # shuffling the numbers every single game for new results
 random.shuffle(list_numbers)
-a, b, c, d, e, f, g, h, i = list_numbers[0], list_numbers[1], list_numbers[2], list_numbers[3], list_numbers[4], list_numbers[5], list_numbers[6], list_numbers[7], list_numbers[8]
+a, b, c, d, e, f, g, h, i = list_numbers[0], list_numbers[1], list_numbers[2], list_numbers[3], list_numbers[4], \
+                            list_numbers[5], list_numbers[6], list_numbers[7], list_numbers[8]
 
 # main logic for the results displayed on the screen
 a_result = a * b + c
@@ -27,10 +28,12 @@ list_results = [a_result, b_result, c_result, a_a, b_b, c_c]
 list_correct_nums = [a, b, c, d, e, f, g, h, i]
 print(list_correct_nums)
 
+
 def clear_view():
     # clear everything on the window
     for slave in tk.grid_slaves():
         slave.destroy()
+
 
 def render_main_view():
     clear_view()
@@ -41,7 +44,8 @@ def render_main_view():
     lbl.grid(column=0, row=0)
     # 'Start' button to start the game
     start_button = Button(tk, text="Start", height=1, width=7, bg="light green", command=render_create_view)
-    start_button.grid(column=0, row=3, pady= 20)
+    start_button.grid(column=0, row=3, pady=20)
+
 
 def popup_won():
     global pop
@@ -74,6 +78,7 @@ def popup_won():
         # refresh_game_button = Button(pop, text="Try again", height=1, width=9, bg="light green", command=render_create_view)
         # refresh_game_button.grid(column=1, row=2)
 
+
 def create_data(list_entry_data_col):
     list_new.clear()
     # to get the entry data
@@ -84,6 +89,7 @@ def create_data(list_entry_data_col):
     print(list_correct_nums)
     # call function to check the answers from the player with the correct ones
     popup_won()
+
 
 def timer():
     # timer logic
@@ -107,6 +113,7 @@ def timer():
         messagebox.showerror("Error Message", "Time is Up")
         tk.quit()
 
+
 def render_create_view():
     clear_view()
     start_index = -1
@@ -122,12 +129,12 @@ def render_create_view():
     # loops to visualize the empty boxes for entries/where the layer writes his numbers to solve the puzzle
     for row in range(1, 6):
         if row % 2 != 0:
-            enter_data = Entry(tk, width=6)
+            enter_data = Entry(tk, width=6, justify="center")
             enter_data.grid(column=3, row=row, pady=3, padx=3)
 
         for col in range(3, 8):
             if col % 2 != 0 and row % 2 != 0:
-                enter_data = Entry(tk, width=6)
+                enter_data = Entry(tk, width=6, justify="center")
                 enter_data.grid(column=col, row=row, pady=3, padx=3)
                 list_entry_data_col.append(enter_data)
             if col % 2 == 0 or row % 2 == 0:
@@ -159,7 +166,8 @@ def render_create_view():
                 result.grid(column=equal_col, row=equal_row, pady=1, padx=1)
 
     # button => calls function which get the information from the entry boxes
-    done_button = Button(tk, text="Done", height=2, width=8, bg="light blue", command=lambda: create_data(list_entry_data_col))
+    done_button = Button(tk, text="Done", height=2, width=8, bg="light blue",
+                         command=lambda: create_data(list_entry_data_col))
     done_button.grid(column=11, row=15, padx=10, pady=20)
 
     refresh_game_button = Button(tk, text="Quit\n game", height=2, width=8, bg="white", command=tk.quit)
@@ -169,11 +177,12 @@ def render_create_view():
 
     print(list_entry_data_col)
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     # main visualization
     tk = Tk()
     tk.title("Math puzzle")
-    
+
     w = 450
     h = 300
     screen_w = tk.winfo_screenwidth()
@@ -181,9 +190,8 @@ if __name__=='__main__':
     x = (screen_w / 2) - (w / 2)
     y = (screen_h / 2) - (h / 2)
     tk.geometry(f"{w}x{h}+{int(x)}+{int(y)}")
-    
+
     # => the function with explanation and "Start" button
     render_main_view()
     # loop to keep the window visible
     tk.mainloop()
-
